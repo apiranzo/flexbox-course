@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlexBox course</title>
+    <title>FlexBox Image course</title>
 
     <!--CSS Style-->
     <style>
@@ -25,26 +25,24 @@
             justify-content: center;
             flex-direction: column;
         }
-        
-        .block{
-            background-color: cadetblue;
-            height: 200px;
-            margin: 200px;
+
+        .container>.img-blocks{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
         }
-
-        .block1{}
-       
-        .block2{}
-
-        .block3{}
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="blocks">
-            <div class="block block1">1</div>
-            <div class="block block2">2</div>
-            <div class="block block3">3</div>
+        <div class="img-blocks">
+            <!--Img random UNSPLASH-->
+            <img src="https://source.unsplash.com/random/150x150" alt="">
+            <img src="https://source.unsplash.com/random/150x150" alt="">
+            <img src="https://source.unsplash.com/random/150x150" alt="">
+            <img src="https://source.unsplash.com/random/150x150" alt="">
+            <img src="https://source.unsplash.com/random/150x150" alt="">
+            <img src="https://source.unsplash.com/random/150x150" alt="">
         </div>
     </div>
 </body>
