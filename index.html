@@ -1,136 +1,157 @@
 <!DOCTYPE html>
-<html lang='en'>
-
+<html lang="en">
 <head>
-    <meta charset='UTF-8'>
-    <title></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NavBar Responsive</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
-        crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+    <!--Link a fuentes-->
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    <!--Link a icons-->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
         crossorigin="anonymous"></script>
 
+    <!--CSS Style-->
     <style>
-        body {
-            font-family: 'Lato', sans-serif;
+        body{
+            /*eliminar todo el espacio por defecto entre elementos y margen navegador*/
+            margin: 0;
+            padding: 0;
+
+            background: #BFBFBF;
         }
 
-        .container {
-            display: flex;
+        html{
+            font-family: 'Raleway', sans-serif;
         }
 
-        .container .item {
-            display: flex;
-            flex: 1;
-            justify-content: space-between;
-            border: 1px solid grey;
-            border-radius: 5px;
-            margin: 10px;
+        .navbar{
+            background: #10403B;
         }
 
-        .container .item .content {
-            display: flex;
+        .navbar div{
+            /*display: none; se usa para anular cualquier comportamiento de posición
+            predeterminada de los elementos. Se va a crear su comportamiento en cada una
+            de las consultas de responsive */
+            display: none;
         }
 
-        .container .item .content .metadata {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin-left: 20px;
+        .navbar .toggle,
+        .navbar .brand{
+            display: inline-block;
         }
 
-        .container .item .content .metadata .title {
-            margin: 0px;
-        }
-
-        .container .item .btn-group {
-            display: flex;
-            align-items: flex-end;
-            align-items: center;
-        }
-
-        .container .item .btn-group .button {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            flex-direction: row;
-            width: 42px;
-            justify-content: center;
-            font-size: 2em;
-        }
-
-        .container .item .btn-group .button a {
-            color: lightseagreen;
-            text-decoration: none;
-        }
-
-        .container .item .btn-group .button:hover {
-            background-color: lightslategray;
-            cursor: pointer;
-        }
-
-        .container .item .btn-group .button:hover a {
+        .navbar .brand{
+            width: 10em;
+            text-align: center;
+            padding: 1em;
             color: white;
         }
 
-        .item.featured {
-            flex: auto;
+        .navbar .link{
+            /*Display block nos permitirá trabajar con los links como 
+            elementos flexibles, no como contenedores flexibles*/
+            display: block;
+            text-align: center;
+            padding: 1em;
+            text-decoration: none;
+
+            background: #127369;
+            color: white;            
         }
 
-        .item.associated {
-            flex: initial;
+        /*Transformar los links cuando se pase el cursor por encima o esten activos*/
+        .navbar .link:hover,
+        .navbar .link:active{
+            background: white;
+            color: #127369; 
+        }
+
+        /*eliminar el subrayado de todos los links*/
+        .navbar a{
+            text-decoration: none;
+        }
+
+        /*Clase de alternancia Para nuestra "hamburguesa de menú"*/
+        .navbar .toggle{
+            padding: 1em;
+            color: #BFBFBF;
+        }
+
+    /*MEDIA-QUERY Responsive nav-bar*/
+        @media (min-width: 48em){
+            .navbar{
+                display: flex;
+            }
+
+            .navbar .left,
+            .navbar .right{
+                display: flex;
+                flex: 1;
+            }
+            .navbar .link{
+                width: auto;
+            }
+
+            .navbar .right{
+                justify-content: flex-end;
+            }
+
+            .navbar .toggle{
+                /*Ocultamos la "Hamburguesa de menú" */
+                display: none;
+            }
+
+            .navbar div{
+                display: flex;
+            }
+
+        }
+
+        @media (max-width: 48em) {
+            .navbar.active.toggle{
+                background: #127369;
+                color: white;
+            }
+
+            .navbar .brand{
+                text-align: left;
+            }
+
+            .navbar.active div{
+                display: block;
+            }
         }
     </style>
 </head>
-
 <body>
+    <nav class="navbar">
+        <!--Hamburger MENÚ-->
+        <a href="#" class="toggle" id="navHamburger">
+            <i class="fas fa-bars"></i>
+        </a>
+        <!--Marca del sitio-->
+        <a href="#" class="brand">AinzArt</a>
 
-    <div class='container'>
-        <div class='item featured'>
-            <div class='content'>
-                <img src='https://d32xj74kbqkoqn.cloudfront.net/uploads/campsite/campsite_image/129/dissecting-rails-icon.jpg' width='200px'
-                    height='120px'>
-                <div class='metadata'>
-                    <h1 class='title'>My amazing title</h1>
-                    <h3>And a subtitle</h3>
-                </div>
-            </div>
-            <div class='btn-group'>
-                <div class='button'>
-                    <a href="#">
-                        <i class="fas fa-plus-circle"></i>
-                    </a>
-                </div>
-                <div class='button'>
-                    <a href="#">
-                        <i class="fas fa-times-circle"></i>
-                    </a>
-                </div>
-            </div>
+        <!--Links de enlace-->
+        <div class="left">
+            <a href="#" class="link">Link 1</a>
+            <a href="#" class="link">Link 2</a>
         </div>
-        <div class='item associated'>
-            <div class='content'>
-                <img src='https://d32xj74kbqkoqn.cloudfront.net/uploads/guide/video_image/43/foundations-video-thumb.jpg' width='200px' height='120px'>
-                <div class='metadata'>
-                    <h1 class='title'>Another amazing post</h1>
-                </div>
-            </div>
-            <div class='btn-group'>
-                <div class='button'>
-                    <a href="#">
-                        <i class="fas fa-plus-circle"></i>
-                    </a>
-                </div>
-                <div class='button'>
-                    <a href="#">
-                        <i class="fas fa-times-circle"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 
+        <div class="right">
+            <a href="#" class="link">Link 3</a>
+        </div>
+    </nav>
+    
 </body>
-
+<!--JavaScript de activación del NAV-BAR Hamburguer-->
+<script>
+    const navHamburger = document.querySelector('#navHamburger');
+        navHamburger.addEventListener('click', (e) => {
+        navHamburger.parentElement.classList.toggle('active');
+    })
+</script>
 </html>
